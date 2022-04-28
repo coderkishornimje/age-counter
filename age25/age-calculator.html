@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+   <style>
+     .body{
+         background-color: beige;
+     }
+     .container{
+         display: flex;
+         flex-direction: column;
+         justify-content: center;
+         align-items:center;
+         height: 100vh;
+         overflow: hidden;
+        }
+        input{
+            padding: 5px;
+            border: none;
+            border-bottom: 2px solid black;
+            margin: 10px;
+        }
+        button{
+            padding: 7px;
+            background: rgb(46, 42, 42);
+            color:whitesmoke;
+            margin-top: 10px;
+        }
+        .main{
+            background-color: aqua;
+            display: flex;
+            flex-direction: column;
+        }
+   </style>
+    </head>
+    <body class="body container">
+        <div class="main">
+        <h1>AGE CALCULATOR</h1>
+        <label for="input"><b>Enter your date of birth</b></label>
+        <input type="number" id="date" placeholder="date" >
+        <input type="number" id ="month"  placeholder="month">
+        <input type="number" id="year" placeholder="year" >
+        
+        <button id="cal-btn">Calculate Age </button>
+        <p id="show-age"> </p>
+    </div>
+        <script>
+            let daysK= document.getElementById("date");
+            let monthK= document.getElementById("month");
+            let yearK= document.getElementById("year");
+        
+            let showAge= document.getElementById("show-age");
+
+            const btn=  document.getElementById("cal-btn");
+
+            var today= new Date();
+            let d= today.getDate();
+            let m= today.getMonth()+1;
+            let y= today.getFullYear();
+
+            let maxDays=0;
+            let monthNum=1;
+
+            btn.addEventListener("click",(days,month,year) => {
+                days = daysK.value;
+                month= monthK.value;
+                year= yearK.value;
+
+                if (daysK.value =="" || monthK.value=="" || yearK.value=="")
+                {
+                    return alert("please enter date of birth properly ?");
+                }
+                  //no else condition needed
+                console.log('current date : ${d} ${m} ${y}'); 
+            
+                    if(m==1)
+                    {
+                        maxDays=31;
+                        monthNum=1;
+                    }
+                    if(m==2)
+                    {
+                        maxDays=28;
+                        monthNum=2;
+                    }
+                    if(m==3)
+                    {
+                        maxDays=31;
+                        monthNum=3;
+                    }
+                    if(m==4)
+                    {
+                        maxDays=30;
+                        monthNum=4;
+                    }
+                    if(m==5)
+                    {
+                        maxDays=31;
+                        monthNum=5;
+                    }
+                    if(m==6)
+                    {
+                        maxDays=30;
+                        monthNum=6;
+                    }
+                    if(m==7)
+                    {
+                        maxDays=31;
+                        monthNum=7;
+                    }
+                    if(m==8)
+                    {
+                        maxDays=31;
+                        monthNum=8;
+                    }
+                    if(m==9)
+                    {
+                        maxDays=30;
+                        monthNum=9;
+                    }
+                    if(m==10)
+                    {
+                        maxDays=31;
+                        monthNum=10;
+                    }
+                    if(m==11)
+                    {
+                        maxDays=30;
+                        monthNum=11;
+                    }
+                    else
+                    {
+                        maxDays=31;
+                        monthNum=12;
+                    }
+
+                    var ageYears= y - year;
+                    if(m<=month)
+                    {
+                        m=m+12;
+                    }
+                    var ageMonths = m - month;
+                    
+                    var ageDays=(maxDays-d)+parseInt(days);
+                    console.log("your age is "+ageYears+"y"+" "+ageMonths+"m"+" "+"and"+" "+ageDays+"d");
+                                        showAge.innerHTML=("your age is "+ageYears+"y"+" "+ageMonths+"m"+" "+"and"+" "+ageDays+"d");
+                
+                    
+            })              
+
+        </script> 
+    </body>
+</html>
